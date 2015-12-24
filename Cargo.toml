@@ -1,6 +1,10 @@
 [package]
+
 name = "chip-8-emulator"
 version = "0.1.0"
 authors = ["Nick Digati <ndigati@gmail.com>"]
+
+[lib]
+name = "chip8"
 
 [dependencies]

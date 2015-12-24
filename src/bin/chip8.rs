@@ -7,8 +7,8 @@
 //  - 15 8-bit registers [V0-VE]
 //      - Array of size 16 1 byte integers (u8, 8-bit unsigned interger)
 //      - VE (last register) is used for the 'carry flag'
-//  - Index register (I)
-//  - Program counter (PC)
+//  - Index register (I) (u16)
+//  - Program counter (PC) (u16)
 //  - Memory Map
 //      - 0x000-0x1FF - Chip 8 interpreter (contains font set in emu)
 //      - 0x050-0x0A0 - Used for the build in 4x5 pixel font set (0-F)
@@ -26,9 +26,13 @@
 //      - Two byte stack pointer (u16)
 //  - Hex based keypad (0x0-0xF)
 //      - Array of size 16 1 byte (u8) to store current state of the key
+extern crate chip8;
+
+use chip8::cpu::Cpu;
+
 fn main() {
     // Set up render system
-    
+
     // Initialize the Chip-8 System and load the game into memory
 
     //Emulation loop
@@ -42,4 +46,7 @@ fn main() {
         // Putting break here for now so it doesn't do nothing in an infinite loop
         break;
     }
+    let cpu = Cpu::new();
+    cpu.print_stuff();
+    println!("Finished running!");
 }
