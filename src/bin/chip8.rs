@@ -46,7 +46,6 @@ fn main() {
         // Putting break here for now so it doesn't do nothing in an infinite loop
         break;
     }
-    let cpu = Cpu::new();
-    cpu.print_stuff();
+    let mut cpu = Cpu::new();
     println!("Finished running!");
 }
