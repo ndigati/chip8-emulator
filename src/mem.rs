@@ -1,7 +1,5 @@
 // File to hold memory function and stuff
 
-use std::fmt;
-
 pub struct Mem {
     memory: [u8; 4096],
 }
