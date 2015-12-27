@@ -10,4 +10,8 @@ impl Mem {
             memory: [0; 4096],
         }
     }
+    
+    pub fn get_memory_from_location(&self, location: u16) -> u8 {
+        return self.memory[location as usize];
+    }
 }

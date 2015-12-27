@@ -47,5 +47,6 @@ fn main() {
         break;
     }
     let mut cpu = Cpu::new();
+    cpu.emulate_cycle();
     println!("Finished running!");
 }

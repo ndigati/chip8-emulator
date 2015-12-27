@@ -1,5 +1,4 @@
 // File to hold CPU functions and stuff
-
 use mem::Mem;
 
 /// 15 8-bit general purpose registers, an Index register, and program counter
@@ -20,7 +19,7 @@ struct Registers {
     VD: u8,
     VE: u8,     // used for the carry flag
     pc: u16,
-    i:  u16,
+    i:  u16
 }
 
 pub struct Cpu {
@@ -62,12 +61,24 @@ impl Cpu {
 
     pub fn emulate_cycle(&self) {
         // Fetch opcode
+        let opcode: u16 = self.get_opcode();
 
         // Decode opcode
 
         // Execute opcode
 
         // Update timers
+    }
+    
+    fn get_opcode(&self) -> u16 {
+        // opcode = memory[pc] << 8 | memory[pc + 1]
+        // The left shift just makes it a 16 bit number (which is the full 2 byte opcode)
+        let first: u8 = self.memory.get_memory_from_location(self.registers.pc);
+        let second: u8 = self.memory.get_memory_from_location(self.registers.pc + 1);
+        // Since rust gives errors when shifting a number by >= number of bits it has
+        // Cast first to a u16 to give leading zeros
+        // Then shifting first into those leading 8 zeros
+        return (first as u16) << 8 | (second as u16);
     }
 
     fn get_pc(&self) -> u16 {
