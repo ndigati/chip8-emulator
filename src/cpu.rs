@@ -67,6 +67,7 @@ impl Cpu {
         // The left shift just makes it a 16 bit number (which is the full 2 byte opcode)
         let first: u8 = self.memory.get_memory_from_location(self.get_pc());
         let second: u8 = self.memory.get_memory_from_location(self.get_pc() + 1);
+        
         // Since rust gives errors when shifting a number by >= number of bits it has
         // Cast first to a u16 to give leading zeros
         // Then shifting first into those leading 8 zeros
