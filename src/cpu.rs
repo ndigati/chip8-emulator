@@ -19,7 +19,8 @@ struct Registers {
     vb: u8,
     vc: u8,
     vd: u8,
-    ve: u8,     // used for the carry flag
+    ve: u8,     
+    vf: u8,      // used for the carry flag
     pc: u16,
     i:  u16
 }
@@ -52,6 +53,7 @@ impl Cpu {
                 vc: 0,
                 vd: 0,
                 ve: 0,
+                vf: 0,
                 pc: 0x200,
                 i:  0,
             },
