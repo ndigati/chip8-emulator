@@ -79,14 +79,11 @@ impl Cpu {
     fn decode_opcode(&self, opcode: u16) {
         match opcode & 0xF000 {
             0x0000  => {
-                // opcode's: 00E0, 00EE, or 0NNN
-                if opcode & 0x00F0 == 0x00E0 {
-                    println!("Clears the screen.");
-                } else if opcode & 0x00FF == 0x00EE {
-                    println!("Returns from a subroutine.");
-                } else {
-                    println!("Calls RCA 1802 program at address NNN. Not necessary for most ROMs.");
-                }
+                match opcode & 0x00FF {
+                    0x00E0 => println!("Clears the screen."),
+                    0x00EE => println!("Returns from a subroutine."),
+                    _       => println!("Calls RCA 1802 program at address NNN. Not necessary for most ROMs.")
+                }                              
             },
             0x1000  => println!("Jumps to address NNN."),
             0x2000  => println!("Calls subroutine at NNN."),
